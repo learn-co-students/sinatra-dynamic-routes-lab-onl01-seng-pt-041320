@@ -10,14 +10,19 @@ class App < Sinatra::Base
     "#{params[:number].to_i**2}"
   end
 
-  get '/say/:number/:phrase' do 
-    @return_string = ""
-    params[:number].to_i.times {@return_string << params[:phrase]}
-    @return_string
+  get '/say/:number/:phrase' do
+    answer = ''
+
+    params[:number].to_i.times do
+      answer << params[:phrase]
+    end
+
+    answer
   end
+  
 
   get '/say/:word1/:word2/:word3/:word4/:word5' do 
-    params[:word1] + " " + params[:word2] + " " + params[:word3] + " " + params[:word4] + " " + params[:word5] +"."
+    "#{params[:word1]} #{params[:word2]} #{params[:word3]} #{params[:word4]} #{params[:word5]}."
   end
 
   get '/:operation/:number1/:number2' do 
